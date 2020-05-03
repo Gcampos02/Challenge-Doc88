@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastel de Ideias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles/minify/main.min.css">
+</head>
+
+<body id="global" class="bg-body">
+    <header class="bg-header">
+        <div class="center-img">
+            <img src="/images/Logo.png" alt="Logo Pastel de Ideias">
+        </div>
+    </header>
+    <section class="register">
+        <img class="float-pastel-r z-5" src="/images/pasteis-img.png" alt="Pastel">
+        <div id="myForm" class="form relative z-15" name="Form">
+            <div class="form-header">
+                <p>Monte aqui o seu cardápio. O que está esperando?</p>
+            </div>
+            <div class="form-body relative z-20">
+                <div class="row">
+                    <div class="col-40">
+                        <div class="ui-input">
+                            <input id="titulo" placeholder="Titulo do pedido" v-model="item.titulo" type="text">
+                            <!-- <label for="titulo" >Titulo do pedido</label> -->
+                        </div>
+                    </div>
+                    <div class="col-40">
+                        <div class="ui-input">
+                            <input id="sabor" placeholder="Sabor" v-model="item.sabor" type="text">
+                            <!-- <label for="sabor" >Sabor</label> -->
+                        </div>
+                    </div>
+                    <div class="col-20">
+                        <div class="ui-input">
+                            <input id="valor" placeholder="R$" v-model="item.valor" id="inputMoney" type="text">
+                            <!-- <label for="valor" >R$</label> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="ui-input">
+                            <textarea id="descricao" placeholder="Descrição" rows="5"
+                                v-model="item.descricao"> </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="ui-upload d-flex justify-content-center flex-column align-items-center relative">
+                            <input @change="onFileSelected($event)" class="send-img" type="file" id="sendImg" name="img"
+                                accept="image/*">
+                            <img src="/images/upload-icon.PNG" width="48" height="45" alt="Icone envio de arquivo">
+                            <p>Jogue aqui o arquivo de imagem do seu pastel ou clique para localizar a pasta.</p>
+                        </div>
+                        <div v-else>
+                            <img :src="image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-btn">
+                <button class="btn btn-red" v-on:click="resetForm()">
+                    Limpar
+                </button>
+                <button class="btn btn-yellow" v-on:click="sendInfo()">
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </section>
+    <div class="line relative">
+        <p>Veja como será apresentado ao cliente</p>
+    </div>
+
+    <section class="container">
+
+        <div class="item">
+            <div class="float-img">
+            </div>
+            <div class="item-box">
+                <div class="item-box-header">
+                    <p class="title">{{ title }}</p>
+                    <p class="value">R$10,00</p>
+                </div>
+                <div class="item-box-body">
+                    <p>Sabor: <span>PowerPoint importante</span></p>
+                    <p>Descrição: <span>1 PPT, 6834 slides e uma pitada de animação</span></p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+</body>
+
+<script src="/plugin/vuejs.js"></script>
+<script src="/scripts/main.js"></script>
+
+</html>
